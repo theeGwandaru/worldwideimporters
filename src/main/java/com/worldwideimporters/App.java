@@ -1,11 +1,7 @@
 package com.worldwideimporters;
 
+import com.worldwideimporters.entities.City;
 import com.worldwideimporters.entities.Customer;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,6 +17,7 @@ public class App {
         EntityManager entityManager = app.entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         List<Customer> customerList = entityManager.createQuery("from Customer").getResultList();
+        List<City> cityList = entityManager.createQuery("from City").getResultList();
         entityManager.getTransaction().commit();
         app.tearDown();
     }
